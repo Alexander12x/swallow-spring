@@ -3,6 +3,7 @@ package io.jovi.swallow.springaop.aspect;/**
  */
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -113,6 +114,33 @@ public class WebControllerAop {
     public void doAfterReturningAdvice2(String keys){
 
         System.out.println("第二个后置返回通知的返回值："+keys);
+    }
+
+    /**
+     * 后置最终通知（目标方法只要执行完了就会执行后置通知方法）
+     * @param joinPoint
+     */
+    @After("executeService()")
+    public void doAfterAdvice(JoinPoint joinPoint){
+
+        System.out.println("后置通知执行了!!!!");
+    }
+
+    /**
+     * 环绕通知：
+     *   环绕通知非常强大，可以决定目标方法是否执行，什么时候执行，执行时是否需要替换方法参数，执行完毕是否需要替换返回值。
+     *   环绕通知第一个参数必须是org.aspectj.lang.ProceedingJoinPoint类型
+     */
+    @Around("execution(* io.jovi.swallow.springaop.controller..*.testAround*(..))")
+    public Object doAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
+        System.out.println("环绕通知的目标方法名："+proceedingJoinPoint.getSignature().getName());
+        try {
+            Object obj = proceedingJoinPoint.proceed();
+            return obj;
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        return null;
     }
 
 }
