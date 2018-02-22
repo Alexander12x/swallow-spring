@@ -19,6 +19,7 @@
     <modules>
         <module>swallow-jdk8</module>
         <module>swallow-spring5</module>
+        <module>swallow-springaop</module>
     </modules>
 
     <properties>
