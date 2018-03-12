@@ -23,6 +23,9 @@ public class Father {
         System.out.println("A");
     }
 
+    {
+        System.out.println("A A A");
+    }
 
     public Father(){
         System.out.println("FATHER");

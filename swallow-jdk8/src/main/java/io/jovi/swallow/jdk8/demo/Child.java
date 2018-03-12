@@ -22,9 +22,17 @@ public class Child extends Father {
         System.out.println("B");
     }
 
-    public Child(){
-        System.out.println("CHILD");
+    {
+        System.out.println("B B B");
     }
+
+    public Child(){
+        super();
+        System.out.println("CHILD");
+
+    }
+
+
 
     public static void main(String[] args) {
         //Child child = new Child();
