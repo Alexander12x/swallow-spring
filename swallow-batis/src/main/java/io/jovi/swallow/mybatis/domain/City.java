@@ -1,10 +1,17 @@
 package io.jovi.swallow.mybatis.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * 城市实体类
  *
  * Created by bysocket on 07/02/2017.
  */
+@Getter
+@Setter
+@NoArgsConstructor
 public class City {
 
     /**
@@ -26,36 +33,4 @@ public class City {
      * 描述
      */
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getProvinceId() {
-        return provinceId;
-    }
-
-    public void setProvinceId(Long provinceId) {
-        this.provinceId = provinceId;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
