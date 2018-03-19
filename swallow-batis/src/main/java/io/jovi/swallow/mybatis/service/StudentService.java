@@ -4,6 +4,8 @@ package io.jovi.swallow.mybatis.service;/**
 
 import io.jovi.swallow.mybatis.domain.Student;
 
+import java.util.List;
+
 /**
  * <p>
  * Title:
@@ -26,4 +28,10 @@ public interface StudentService {
      * @return
      */
     int insert(Student student);
+    /**
+     * 根据班级名称查询
+     * @param className
+     * @return
+     */
+    List<Student> findStudentByClassName(String className);
 }

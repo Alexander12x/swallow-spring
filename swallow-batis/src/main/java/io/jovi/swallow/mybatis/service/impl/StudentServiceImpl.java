@@ -8,6 +8,8 @@ import io.jovi.swallow.mybatis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * Title:
@@ -36,5 +38,16 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public int insert(Student student) {
         return mapper.insert(student);
+    }
+
+    /**
+     * 根据班级名称查询
+     *
+     * @param className
+     * @return
+     */
+    @Override
+    public List<Student> findStudentByClassName(String className) {
+        return mapper.findStudentByClassName(className);
     }
 }

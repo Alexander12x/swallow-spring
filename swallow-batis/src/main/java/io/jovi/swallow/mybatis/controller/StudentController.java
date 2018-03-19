@@ -5,9 +5,12 @@ package io.jovi.swallow.mybatis.controller;/**
 import io.jovi.swallow.mybatis.domain.Student;
 import io.jovi.swallow.mybatis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -38,5 +41,10 @@ public class StudentController {
         student.setAge(10);
         studentService.insert(student);
         return student;
+    }
+
+    @RequestMapping(value = "/student/get/{className}", method = RequestMethod.GET)
+    public List<Student> get(@PathVariable(name = "className") String className) {
+       return studentService.findStudentByClassName(className);
     }
 }
