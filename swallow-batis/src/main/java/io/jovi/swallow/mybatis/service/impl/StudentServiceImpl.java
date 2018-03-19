@@ -50,4 +50,14 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findStudentByClassName(String className) {
         return mapper.findStudentByClassName(className);
     }
+
+    /**
+     * 查询所有的学生
+     *
+     * @return
+     */
+    @Override
+    public List<Student> queryList() {
+        return mapper.queryList();
+    }
 }

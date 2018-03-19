@@ -34,4 +34,9 @@ public interface StudentService {
      * @return
      */
     List<Student> findStudentByClassName(String className);
+    /**
+     * 查询所有的学生
+     * @return
+     */
+    List<Student> queryList();
 }

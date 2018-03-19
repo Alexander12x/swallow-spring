@@ -2,13 +2,11 @@ package io.jovi.swallow.mybatis.controller;/**
  * Created by jovi on 16/03/2018.
  */
 
+import com.github.pagehelper.PageHelper;
 import io.jovi.swallow.mybatis.domain.Student;
 import io.jovi.swallow.mybatis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,18 @@ public class StudentController {
     @RequestMapping(value = "/student/get/{className}", method = RequestMethod.GET)
     public List<Student> get(@PathVariable(name = "className") String className) {
        return studentService.findStudentByClassName(className);
+    }
+
+    /**
+     * 获取学生列表
+     * @param start
+     * @param size
+     * @return
+     */
+    @GetMapping(value = "list/{start}/{size}")
+    public List<Student> getUserList(@PathVariable("start")int start,@PathVariable("size")int size){
+        PageHelper.startPage(start,size);
+        List<Student> list= studentService.queryList();
+        return list;
     }
 }

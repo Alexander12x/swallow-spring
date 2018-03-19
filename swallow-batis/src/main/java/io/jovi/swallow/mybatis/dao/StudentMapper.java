@@ -39,4 +39,17 @@ public interface StudentMapper {
     })
     List<Student> findStudentByClassName(String className);
 
+    /**
+     * 查询所有的学生
+     * @return
+     */
+    @Select("select * from swallow_student student")
+    @Results({
+            @Result(property="id",column="id"),
+            @Result(property="stuNo",column="stu_no"),
+            @Result(property="name",column="name"),
+            @Result(property="age",column="age")
+    })
+    List<Student> queryList();
+
 }
