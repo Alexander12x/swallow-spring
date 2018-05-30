@@ -45,7 +45,8 @@ public class OptionTest {
     }
 
     public static void main(String[] args) throws Exception  {
-        Long b = optionForLong(10L);
+        Long count = 10L;
+        Long b = Optional.fromNullable(count).or(0L);
         System.out.println("b="+b);
     }
 }
